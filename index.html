@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Christmas Gifting</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="row">
+            <div class="header-search-section">
+                <button class="btn btn-header" onclick="fetchSearchResults()"><i class="fa fa-search"></i></button>
+                <input type="text" name="search-box" class="search-box" id="search-box" size="70"
+                    value="Christmas Gifts">
+            </div>
+            <div class="header-setting-section">
+                <div class="user-section">
+                    <i class="fa fa-user fa-header-user"></i>
+                </div>
+                <div class="trophy-section">
+                    <i class="fa fa-trophy fa-header-trophy"></i>
+                </div>
+                <div class="settings-section">
+                    <i class="fa fa-cog fa-header-settings"></i>
+                </div>
+            </div>
+        </div>
+        <div class="main-content-tabs">
+            <button class="tabs tabs-active">Web</button>
+            <button class="tabs">Images</button>
+            <button class="tabs">Videos</button>
+            <button class="tabs">Maps</button>
+            <button class="tabs">News</button>
+            <button class="tabs">Explore</button>
+        </div>
+    </header>
+
+    <section class="main-content fade">
+        <section class="filter-container">
+            <h2 class="filter-heading" id="filter-heading">Christmas gifts </h2>
+            <div class="category-filter">
+                <label for="category" class="field-label">SELECT CATEGORY</label>
+                <select class="category-select" name="category" id="category-select"
+                    onchange="filterImagesByCategory(this)" placeholder="Select category">
+                    <option value="" disabled selected>Category</option>
+                    <option value="trending">Trending</option>
+                    <option value="lifeStyle">Lifestyle</option>
+                    <option value="homeDecor">Home Decor</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="appliances">Appliances</option>
+                </select>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="gender-filter">
+                <label class="field-label">GIFT FOR</label>
+                <div class="radio-container all">
+                    <i class="fa fa-user"></i>
+                    <label>All</label>
+                </div>
+                <div class="radio-container men">
+                    <i class="fa fa-male"></i>
+                    <label>Men</label>
+                </div>
+                <div class="radio-container women">
+                    <i class="fa fa-female"></i>
+                    <label>Women</label>
+                </div>
+                <div class="radio-container kids">
+                    <i class="fa fa-child"></i>
+                    <label>kids</label>
+                </div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="price-range-filter">
+                <label for="price-range" class="field-label">SET PRICE</label>
+                <input type="range" name="price-range" min="0" value="0" max="1000" step="50" class="slider"
+                    onchange="filterImagesByPrice(this.value)">
+                <div class="selected-range" id="selected-range-value">10</div>
+            </div>
+        </section>
+        <section class="image-grid-wrapper">
+            <div class="left-arrow-wrapper">
+                <button class="btn-previous" id="btn-previous" onclick="slideImageGrid('previous')"> <i
+                        class="fa fa-angle-left"></i> </button>
+            </div>
+            <div class="visibility-grid slide-right">
+                <div class="grid-container" id="grid-container-1">
+                </div>
+            </div>
+            <div class="visibility-grid slide-right">
+                <div class="grid-container" id="grid-container-2">
+                </div>
+            </div>
+            <div class="visibility-grid slide-right">
+                <div class="grid-container" id="grid-container-3">
+                </div>
+            </div>
+            <div class="right-arrow-wrapper">
+                <button class="btn-next" id="btn-next" onclick="slideImageGrid('next')"> <i
+                        class="fa fa-angle-right"></i> </button>
+            </div>
+        </section>
+
+    </section>
+    <section class="results-container">
+        <section class="result-links-container">
+            <div class="result-wrapper">
+                <a class="result-wrapper-a">100+ Best Gift Ideas 2022 - Good House keeping</a>
+                <p class="result-wrapper-ad-p"><span class="result-wrapper-ad">Ad </span> www.justdial.com</p>
+                <p class="result-wrapper-p">Find the perfect gift for everyone on your list in 2022,no matter your
+                    budget.
+                    Browse holiday gift guides for Mom, the guys, kids, pets and more.
+                </p>
+                <div class="results-links-wrapper">
+                    <a class="results-links-wrapper-a">Last-minute Christmas gifts</a>
+                    <a class="results-links-wrapper-a">99 Unique Christmas gifts</a>
+                    <a class="results-links-wrapper-a">Star war gifts</a>
+                    <a class="results-links-wrapper-a">Couple Gifts</a>
+                </div>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a">Juliska Gift Collection - View the Complete Collection!</a>
+                <p class="result-wrapper-ad-p"><span class="result-wrapper-ad">Ad </span> www.juliska.com</p>
+                <p class="result-wrapper-p">View the complete collection! Browse and buy online today.View the complete
+                    collection! Browse and buy online today.</p>
+                <div class="results-links-wrapper">
+                    <a class="results-links-wrapper-a">Shop New Designs</a>
+                    <a class="results-links-wrapper-a">Registry</a>
+                    <a class="results-links-wrapper-a">Shop Glass</a>
+                    <a class="results-links-wrapper-a">Shop Dinnerware</a>
+                </div>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a">Novelty Gifts & Toys | RINovelty.com</a>
+                <p class="result-wrapper-ad-p"><span class="result-wrapper-ad">Ad </span> RINovelty.com</p>
+                <p class="result-wrapper-p">Latest & Greatest Novelties, Toys, And Party Supplies. Shop Now & Save</p>
+                <div class="results-links-flex-wrapper">
+                    <a class="results-links-wrapper-a">Inflatables</a>
+                    <a class="results-links-wrapper-a">Jokes & Gag Items</a>
+                    <a class="results-links-wrapper-a">Light-Up & LED</a>
+                    <a class="results-links-wrapper-a">Sticky & Stretch Items</a>
+                </div>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a">Sympathy Gifts Trees | SeedsOfLife.Com</a>
+                <p class="result-wrapper-ad-p"><span class="result-wrapper-ad">Ad </span> SeedsofLife.Com/InMemory.html
+                </p>
+                <p class="result-wrapper-p">Healthy, Fast Growing <b>Gift Trees To Be Cherished For A Lifetime.</b></p>
+                <p class="result-wrapper-ad-p">
+                    <span class="result-wrapper-ad">Memory Tree Gift | </span>
+                    <span class="result-wrapper-ad">Memorial Trees | </span>
+                    <span class="result-wrapper-ad">Sympathy Tree Gift </span>
+                </p>
+                <div class="results-links-flex-wrapper">
+                    <a class="results-links-wrapper-a">Memorial Gift Trees</a>
+                    <a class="results-links-wrapper-a">Gift Trees for Pet Sympathy</a>
+                </div>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a">Christmas 2022: <span class="bold">Gifts & Holiday</span> Decorations:
+                    Target</a>
+                <p class="result-wrapper-ad-p"> www.target.com/christmas/-N-5xt30</p>
+                <p class="result-wrapper-p">Shop Target for the perfect <span class="bold">Christmas gifts,
+                        holiday</span> decorations and more to make your season bright.
+                    Free shipping on select purchases over $25</p>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a">Unique <span class="bold">Christmas Gifts, Holiday Gift Ideas |
+                        UncommonGoods</span></a>
+                <p class="result-wrapper-ad-p"> www.uncommongoods.com/occasions/christmas-gifts/christmas-gifts</p>
+                <p class="result-wrapper-p">Find unique <span class="bold">Christmas </span> presents and gift ideas for
+                    men,women an kids at <span class="bold">UncommonGoods</span>
+                    Free shipping on select purchases over $25</p>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a"><span class="bold">Gifts for Christmas </span>| Unique<span class="bold">
+                        Christmas Gift Ideas</span> - CafePress</a>
+                <p class="result-wrapper-ad-p"> www.cafepress.com/+<span class="bold">christmas</span></p>
+                <p class="result-wrapper-p">20 oetms. Shop our large selection of <span class="bold">Christmas
+                        Gifts</span> t-shirts,posters and stickers starting at $5. Unique <span
+                        class="bold">Christmas</span> designs. Fast Shipping
+                    Free shipping on select purchases over $25</p>
+            </div>
+
+        </section>
+        <section class="related-search-container">
+            <h3>Related Seaches</h3>
+            <div class="related-search-wrapper">
+                <div class="related-search-links-wrapper">
+                    <a class="related-search-links-a">Best Christmas Gifts 2022</a>
+                    <a class="related-search-links-a">Unique Inexpensive Christmas Gifts</a>
+                    <a class="related-search-links-a">Last Minute Christmas Gifts</a>
+                    <a class="related-search-links-a">Home made Christmas Gifts</a>
+                    <a class="related-search-links-a">Top 10 Christmas Gifts</a>
+                    <a class="related-search-links-a">Christmas Gift Ideas 2022</a>
+                    <a class="related-search-links-a">Christmas Gift Ideas</a>
+                    <a class="related-search-links-a">Christmas Gift Ideas for Couples</a>
+                </div>
+            </div>
+            <hr>
+            <div class="related-image-grid-wrapper">
+                <div class="related-image-container">
+                    <div class="related-image-wrapper">
+                        <img src="https://m.media-amazon.com/images/I/41QagGt1CyL._SX679_.jpg" alt="Christmas Gifts">
+                    </div>
+                    <div class="related-image-text">
+                        <a class="related-links-image-a">Holiday Gifts</a>
+                    </div>
+                </div>
+                <div class="related-image-container">
+                    <div class="related-image-wrapper">
+                        <img src="https://m.media-amazon.com/images/I/31KOeJk3vqL.jpg" alt="Christmas Gifts">
+                    </div>
+                    <div class="related-image-text">
+                        <a class="related-links-image-a">Birthday Gifts</a>
+                    </div>
+                </div>
+                <div class="related-image-container">
+                    <div class="related-image-wrapper">
+                        <img src="https://m.media-amazon.com/images/I/71aee8fuwyL._SX679_.jpg" alt="Christmas Gifts">
+                    </div>
+                    <div class="related-image-text">
+                        <a class="related-links-image-a">Teacher Gifts</a>
+                    </div>
+                </div>
+                <div class="related-image-container">
+                    <div class="related-image-wrapper">
+                        <img src="https://source.unsplash.com/1600x900/?gifts" alt="Christmas Gifts">
+                    </div>
+                    <div class="image-text">
+                        <a class="related-links-image-a">DIY Christmas Gifts</a>
+                    </div>
+                </div>
+                <div class="related-image-container">
+                    <div class="related-image-wrapper">
+                        <img src="https://source.unsplash.com/1600x900/?gifts" alt="Christmas Gifts">
+                    </div>
+                    <div class="image-text">
+                        <a class="related-links-image-a">Teacher Christmas Gifts</a>
+                    </div>
+                </div>
+                <div class="related-image-container">
+                    <div class="related-image-wrapper">
+                        <img src="https://source.unsplash.com/1600x900/?gifts" alt="Christmas Gifts">
+                    </div>
+                    <div class="related-image-text">
+                        <a class="related-links-image-a">Christmas Gifts</a>
+                    </div>
+                </div>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a">Unique <span class="bold">Christmas Gifts, Holiday Gift Ideas |
+                        UncommonGoods</span></a>
+                <p class="result-wrapper-ad-p"> www.uncommongoods.com/occasions/christmas-gifts/christmas-gifts</p>
+                <p class="result-wrapper-p">Find unique <span class="bold">Christmas </span> presents and gift ideas for
+                    men,women an kids at <span class="bold">UncommonGoods</span>
+                    Free shipping on select purchases over $25</p>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a"><span class="bold">Gifts for Christmas </span>| Unique<span class="bold">
+                        Christmas Gift Ideas</span> - CafePress</a>
+                <p class="result-wrapper-ad-p"> www.cafepress.com/+<span class="bold">christmas</span></p>
+                <p class="result-wrapper-p">20 oetms. Shop our large selection of <span class="bold">Christmas
+                        Gifts</span> t-shirts,posters and stickers starting at $5. Unique <span
+                        class="bold">Christmas</span> designs. Fast Shipping
+                    Free shipping on select purchases over $25</p>
+            </div>
+            <div class="result-wrapper">
+                <a class="result-wrapper-a"><span class="bold">Gifts for Christmas </span>| Unique<span class="bold">
+                        Christmas Gift Ideas</span> - CafePress</a>
+                <p class="result-wrapper-ad-p"> www.cafepress.com/+<span class="bold">christmas</span></p>
+                <p class="result-wrapper-p">20 oetms. Shop our large selection of <span class="bold">Christmas
+                        Gifts</span> t-shirts,posters and stickers starting at $5. Unique <span
+                        class="bold">Christmas</span> designs. Fast Shipping
+                    Free shipping on select purchases over $25</p>
+            </div>
+        </section>
+    </section>
+    <footer class="footer">
+        <section class="footer-section">
+            <button class="tabs">Privacy and Cookies</button>
+            <button class="tabs">Legal</button>
+            <button class="tabs">Advertise</button>
+            <button class="tabs">About our ads</button>
+            <button class="tabs">Help</button>
+            <button class="tabs">Feedback</button>
+        </section>
+    </footer>
+    <script src="scripts/js/main.js" type="text/javascript"></script>
+</body>
+
+</html>
